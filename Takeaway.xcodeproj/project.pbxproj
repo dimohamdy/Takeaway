@@ -123,10 +123,9 @@
 			children = (
 				3D5F5C7A2210D7D5002A5804 /* AppDelegate.swift */,
 				3D5F5CC32213955D002A5804 /* RealmManager.swift */,
-				3D5F5CC12212FB44002A5804 /* New Group */,
+				3D5F5CC12212FB44002A5804 /* Extension */,
 				3D5F5CC22212FBDE002A5804 /* DataAccessLayer */,
 				3D5F5C9C2211A100002A5804 /* Models */,
-				3D5F5CA52211A766002A5804 /* RestaurantRepository */,
 				3D5F5CB42211CCF4002A5804 /* Scene */,
 				3D5F5C7E2210D7D5002A5804 /* Main.storyboard */,
 				3D5F5C812210D7DA002A5804 /* Assets.xcassets */,
@@ -185,19 +184,20 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
-		3D5F5CC12212FB44002A5804 /* New Group */ = {
+		3D5F5CC12212FB44002A5804 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				3D5F5CB02211AEF7002A5804 /* CellReusable.swift */,
 				3D5F5CBD2211D059002A5804 /* UITableView+Extention.swift */,
 				3D5F5CBF2211DD17002A5804 /* Storyboard+Extension.swift */,
 			);
-			path = "New Group";
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		3D5F5CC22212FBDE002A5804 /* DataAccessLayer */ = {
 			isa = PBXGroup;
 			children = (
+				3D5F5CA52211A766002A5804 /* RestaurantRepository */,
 				3D5F5CA32211A63C002A5804 /* DataLoader.swift */,
 				3D5F5C9A2211A010002A5804 /* Restaurants.json */,
 			);

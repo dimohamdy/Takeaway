@@ -1,6 +1,6 @@
 //
 //  DataLoader.swift
-//  TakeawayTests
+//  Takeaway
 //
 //  Created by BinaryBoy on 31/1/19.
 //  Copyright © 2019 BinaryBoy. All rights reserved.

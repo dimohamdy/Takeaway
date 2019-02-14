@@ -1,6 +1,6 @@
 //
 //  RealmManager.swift
-//  Iqraali
+//  Takeaway
 //
 //  Created by BinaryBoy on 4/30/18.
 //  Copyright © 2018 abdelrahman mohamed. All rights reserved.
@@ -16,7 +16,7 @@ struct RealmManager {
                 let realm = try Realm()
                 return realm
             } catch {
-//                CLSLog("Could not access  database: \(error.localizedDescription)")
+                print("Could not access  database: \(error.localizedDescription)")
             }
             return self.realm
     }
@@ -27,7 +27,7 @@ struct RealmManager {
                 writeClosure()
             }
         } catch {
-//            CLSLog("Could not write to database: \(error.localizedDescription)")
+            print("Could not write to database: \(error.localizedDescription)")
         }
     }
 }

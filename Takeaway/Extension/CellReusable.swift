@@ -1,6 +1,6 @@
 //
 //  ReusableCellView.swift
-//  Scout
+//  Takeaway
 //
 //  Created by BinaryBoy on 12/8/18.
 //  Copyright © 2018 BinaryBoy. All rights reserved.
