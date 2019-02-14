@@ -8,7 +8,7 @@
 
 import Foundation
 
-func getData() -> Data? {
+func getDataFromLocalJSON() -> Data? {
 
     guard let path = Bundle.main.path(forResource: "Restaurants", ofType: "json") else {
         return nil

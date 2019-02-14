@@ -15,7 +15,7 @@ final class LocalRestaurantRepository: RestaurantRepository {
     static func getRestaurantsFromJSONFile()->[Restaurant] {
         let decoder = JSONDecoder()
 
-        guard let data = getData(), let result = try? decoder.decode(Result.self, from: data), let restaurants = result.restaurants, restaurants.count > 0 else {
+        guard let data = getDataFromLocalJSON(), let result = try? decoder.decode(Result.self, from: data), let restaurants = result.restaurants, restaurants.count > 0 else {
             return []         
         }
 
