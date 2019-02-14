@@ -13,7 +13,7 @@ protocol ViewModelDelegate: class {
 class RestaurantListViewModel {
     
     // input
-    let restaurantRepository:RestaurantRepository!
+//    let restaurantRepository:RestaurantRepository!
     var sortOption:SortOptions!
 
     // output
@@ -21,28 +21,27 @@ class RestaurantListViewModel {
     // output
     weak var delegate: ViewModelDelegate?
 
-    init(restaurantRepository:RestaurantRepository) {
-        self.restaurantRepository = restaurantRepository
-        restaurants = restaurantRepository.getRestaurants()
+    init(restaurantRepository:RestaurantRepository.Type) {
+        restaurants = restaurantRepository.getRestaurantsFromDB()
     }
 
     func getFavoritesRestaurants() -> [Restaurant]{
         let topRestaurants =  restaurants.filter { restaurant -> Bool in
-            return restaurant.isFavorite ?? false
+            return restaurant.isFavorite 
         }
         return topRestaurants
     }
     
     func getNonFavoritesRestaurants() -> [Restaurant]{
         let topRestaurants =  restaurants.filter { restaurant -> Bool in
-            return !(restaurant.isFavorite ?? false)
+            return !(restaurant.isFavorite )
         }
         return topRestaurants
     }
     
     func sortDependOnStatus() -> [Restaurant]{
         let topRestaurants =  restaurants.filter { restaurant -> Bool in
-            return restaurant.isFavorite ?? false
+            return restaurant.isFavorite 
         }
         return topRestaurants
     }

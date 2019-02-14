@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e0v-hD-SIp">
-                                <rect key="frame" x="0.0" y="90" width="375" height="577"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="569"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantViewCell" rowHeight="110" id="HyR-vF-BX5" customClass="RestaurantViewCell" customModule="Takeaway" customModuleProvider="target">
@@ -36,25 +36,19 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="93" height="88"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wO-It-yZ1">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="22"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="29.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9df-ze-XM5">
-                                                                    <rect key="frame" x="0.0" y="22" width="47.5" height="22"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkp-0P-sWw">
-                                                                    <rect key="frame" x="0.0" y="44" width="26.5" height="22"/>
+                                                                    <rect key="frame" x="0.0" y="29.5" width="47.5" height="29"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWQ-Ry-To5">
-                                                                    <rect key="frame" x="0.0" y="66" width="40.5" height="22"/>
+                                                                    <rect key="frame" x="0.0" y="58.5" width="40.5" height="29.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -68,6 +62,9 @@
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="qvF-j4-412"/>
                                                             </constraints>
                                                             <state key="normal" image="favorite"/>
+                                                            <connections>
+                                                                <action selector="addToFavorites:" destination="HyR-vF-BX5" eventType="touchUpInside" id="vBH-oz-7mO"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -82,7 +79,6 @@
                                         <connections>
                                             <outlet property="favoriteButton" destination="hg6-lU-Sky" id="0Ii-bg-1NC"/>
                                             <outlet property="nameLabel" destination="9wO-It-yZ1" id="Tye-AV-4rF"/>
-                                            <outlet property="sortKeyLabel" destination="hkp-0P-sWw" id="a1S-Vn-qaD"/>
                                             <outlet property="sortValueLabel" destination="zWQ-Ry-To5" id="Gf6-aQ-vWP"/>
                                             <outlet property="statusLabel" destination="9df-ze-XM5" id="fcX-2k-GHe"/>
                                         </connections>
@@ -90,11 +86,14 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZg-Vl-Edd">
-                                <rect key="frame" x="87.5" y="40" width="200" height="30"/>
+                                <rect key="frame" x="87.5" y="40" width="200" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="IRN-rX-wdM"/>
                                 </constraints>
-                                <state key="normal" title="Sort Option"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                <state key="normal" title="Sort Option">
+                                    <color key="titleColor" red="0.98823529409999999" green="0.4039215686" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="showSortOptions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DXR-Ov-knl"/>
                                 </connections>

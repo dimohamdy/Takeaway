@@ -8,5 +8,10 @@
 
 import Foundation
 protocol RestaurantRepository {
-    func getRestaurants()->[Restaurant]
+    static func getRestaurantsFromJSONFile()->[Restaurant]
+    static func getRestaurantsFromDB()->[Restaurant]
+    static func saveRestaurants(restaurants:[Restaurant])
+    static func getFavoriatesRestaurants()->[Restaurant]
+    static func addRestaurantToFavorite(restaurant:Restaurant)
+    static func removeRestaurantToFavorite(restaurant:Restaurant)
 }

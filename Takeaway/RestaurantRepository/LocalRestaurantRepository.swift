@@ -12,7 +12,7 @@ import UIKit
 
 final class LocalRestaurantRepository: RestaurantRepository {
 
-    func getRestaurants()->[Restaurant] {
+    static func getRestaurantsFromJSONFile()->[Restaurant] {
         let decoder = JSONDecoder()
 
         guard let data = getData(), let result = try? decoder.decode(Result.self, from: data), let restaurants = result.restaurants, restaurants.count > 0 else {
@@ -21,4 +21,40 @@ final class LocalRestaurantRepository: RestaurantRepository {
 
         return restaurants
     }
+    
+    static func getRestaurantsFromDB()->[Restaurant]{
+        return Array(RealmManager.realm.objects(Restaurant.self))
+    }
+
+    
+    static func saveRestaurants(restaurants:[Restaurant]){
+        restaurants.forEach { restaurant in
+            RealmManager.write {
+                RealmManager.realm.add(restaurant)
+            }
+        }
+    }
+    
+    static func getNonFavoriatesRestaurants()->[Restaurant]{
+        
+        return Array(RealmManager.realm.objects(Restaurant.self).filter("isFavorite == %@", false))
+    }
+
+    static func getFavoriatesRestaurants()->[Restaurant]{
+        
+        return Array(RealmManager.realm.objects(Restaurant.self).filter("isFavorite == %@", true))
+    }
+    
+    static func addRestaurantToFavorite(restaurant:Restaurant){
+        RealmManager.write {
+            restaurant.isFavorite = true
+        }
+    }
+    
+    static func removeRestaurantToFavorite(restaurant:Restaurant){
+        RealmManager.write {
+            restaurant.isFavorite = false
+        }
+    }
+
 }

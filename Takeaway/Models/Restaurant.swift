@@ -6,13 +6,14 @@
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
+import RealmSwift
 
-struct Restaurant : Codable {
+class Restaurant : Object,Decodable {
 
-	let name : String?
-	let sortingValues : SortingValue?
-	let status : String?
-    var isFavorite : Bool?
+	@objc dynamic var name : String? = ""
+	@objc dynamic var sortingValues : SortingValue?
+	@objc dynamic var status : String?  = ""
+    @objc dynamic var isFavorite : Bool  = false
 
 
 	enum CodingKeys: String, CodingKey {
@@ -21,13 +22,16 @@ struct Restaurant : Codable {
 		case status = "status"
         case isFavorite = "isFavorite"
 	}
-	init(from decoder: Decoder) throws {
+    convenience required init(from decoder: Decoder) throws  {
+        self.init()
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		name = try values.decodeIfPresent(String.self, forKey: .name)
         sortingValues = try values.decodeIfPresent(SortingValue.self, forKey: .sortingValues)
 		status = try values.decodeIfPresent(String.self, forKey: .status)
-        isFavorite = try values.decodeIfPresent(Bool.self, forKey: .isFavorite)
+        isFavorite = try values.decodeIfPresent(Bool.self, forKey: .isFavorite) ?? false
 	}
 
-
+    override static func primaryKey() -> String? {
+        return "name"
+    }
 }

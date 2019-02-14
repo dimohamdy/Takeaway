@@ -21,7 +21,7 @@ class RestaurantListViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     var tableViewDataSource:TableViewDataSource!
-    var restaurants:[Restaurant]!
+
     override func viewDidLoad() {
         super.viewDidLoad()
    
@@ -30,13 +30,11 @@ class RestaurantListViewController: UIViewController {
         sortOptionDropDown.direction = .any
         
         viewModel.delegate = self
-        restaurants = viewModel.restaurantRepository.getRestaurants()
-        tableViewDataSource = TableViewDataSource(restaurants: restaurants, sortOption: .bestMatch)
+        
+        tableViewDataSource = TableViewDataSource(restaurants: viewModel.restaurants, sortOption: .bestMatch)
         
         resturantTableView.delegate = tableViewDataSource
         resturantTableView.dataSource = tableViewDataSource
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

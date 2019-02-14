@@ -29,6 +29,7 @@
 		3D5F5CBC2211CD18002A5804 /* RestaurantListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CB82211CD18002A5804 /* RestaurantListViewModel.swift */; };
 		3D5F5CBE2211D059002A5804 /* UITableView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CBD2211D059002A5804 /* UITableView+Extention.swift */; };
 		3D5F5CC02211DD17002A5804 /* Storyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CBF2211DD17002A5804 /* Storyboard+Extension.swift */; };
+		3D5F5CC42213955E002A5804 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CC32213955D002A5804 /* RealmManager.swift */; };
 		ACCA72C545114AE12009B286 /* Pods_TakeawayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B029274B8DA0AF5CEEF4A482 /* Pods_TakeawayTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		3D5F5CB82211CD18002A5804 /* RestaurantListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewModel.swift; sourceTree = "<group>"; };
 		3D5F5CBD2211D059002A5804 /* UITableView+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extention.swift"; sourceTree = "<group>"; };
 		3D5F5CBF2211DD17002A5804 /* Storyboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard+Extension.swift"; sourceTree = "<group>"; };
+		3D5F5CC32213955D002A5804 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		6201DC62DA9FF71EA018D413 /* Pods_Takeaway.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Takeaway.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		724195C2AE2BE391AA0599B6 /* Pods-TakeawayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeawayTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TakeawayTests/Pods-TakeawayTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6F7B82DD96F9410801FCED7 /* Pods-Takeaway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Takeaway.release.xcconfig"; path = "Pods/Target Support Files/Pods-Takeaway/Pods-Takeaway.release.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				3D5F5C7A2210D7D5002A5804 /* AppDelegate.swift */,
+				3D5F5CC32213955D002A5804 /* RealmManager.swift */,
 				3D5F5CC12212FB44002A5804 /* New Group */,
 				3D5F5CC22212FBDE002A5804 /* DataAccessLayer */,
 				3D5F5C9C2211A100002A5804 /* Models */,
@@ -393,6 +396,7 @@
 				3D5F5CBA2211CD18002A5804 /* RestaurantListViewController.swift in Sources */,
 				3D5F5CBB2211CD18002A5804 /* RestaurantListBuilder.swift in Sources */,
 				3D5F5CA92211A766002A5804 /* RestaurantRepository.swift in Sources */,
+				3D5F5CC42213955E002A5804 /* RealmManager.swift in Sources */,
 				3D5F5CC02211DD17002A5804 /* Storyboard+Extension.swift in Sources */,
 				3D5F5CB12211AEF7002A5804 /* CellReusable.swift in Sources */,
 				3D5F5CB92211CD18002A5804 /* RestaurantListRouter.swift in Sources */,

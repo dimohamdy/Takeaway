@@ -16,8 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        let defaults = UserDefaults.standard
+        if  defaults.bool(forKey: "openedBefore") == false {
+            defaults.set(true, forKey: "openedBefore")
+            //get data from json and then save it to database and use it
+            let restaurants = LocalRestaurantRepository.getRestaurantsFromJSONFile()
+            LocalRestaurantRepository.saveRestaurants(restaurants: restaurants)
+        }
+        
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = RestaurantListBuilder.viewController(dataSource: LocalRestaurantRepository())
+        self.window?.rootViewController = RestaurantListBuilder.viewController(dataSource: LocalRestaurantRepository.self)
         self.window?.makeKeyAndVisible()
         return true
     }

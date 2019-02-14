@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Result : Codable {
+struct Result : Decodable {
 
 	let restaurants : [Restaurant]?
 
