@@ -14,6 +14,9 @@ class Restaurant : Object,Decodable {
 	@objc dynamic var sortingValues : SortingValue?
 	@objc dynamic var status : String?  = ""
     @objc dynamic var isFavorite : Bool  = false
+    var resturantState : ResturantState {
+        return ResturantState(rawValue: status!) ?? .closed
+    }
 
 
 	enum CodingKeys: String, CodingKey {

@@ -13,78 +13,57 @@ protocol ViewModelDelegate: class {
 class RestaurantListViewModel {
     
     // input
-//    let restaurantRepository:RestaurantRepository!
-    var sortOption:SortOptions!
+    var sortOption:SortOptions = .bestMatch
 
     // output
-    let restaurants:[Restaurant]!
+    var restaurants:[Restaurant] = []
     // output
     weak var delegate: ViewModelDelegate?
 
     init(restaurantRepository:RestaurantRepository.Type) {
         restaurants = restaurantRepository.getRestaurantsFromDB()
     }
-
-    func getFavoritesRestaurants() -> [Restaurant]{
-        let topRestaurants =  restaurants.filter { restaurant -> Bool in
-            return restaurant.isFavorite 
-        }
-        return topRestaurants
-    }
-    
-    func getNonFavoritesRestaurants() -> [Restaurant]{
-        let topRestaurants =  restaurants.filter { restaurant -> Bool in
-            return !(restaurant.isFavorite )
-        }
-        return topRestaurants
-    }
-    
-    func sortDependOnStatus() -> [Restaurant]{
-        let topRestaurants =  restaurants.filter { restaurant -> Bool in
-            return restaurant.isFavorite 
-        }
-        return topRestaurants
-    }
-    
-    func sort(sortOption:SortOptions,restaurants:[Restaurant]) -> [Restaurant] {
+    func sortResults(sortOption:SortOptions) {
         self.sortOption = sortOption
-        let sortedrestaurants:[Restaurant]
+        sortForValues()
+        sortWithStatus()
+        sortWithFavourite()
+        delegate?.updateData(restaurants: self.restaurants, sortOption: self.sortOption)
+    }
+    
+    private func sortForValues() {
         switch sortOption {
         case .bestMatch:
-            sortedrestaurants = restaurants.sorted(by: { $0.sortingValues?.bestMatch ?? 0 > $1.sortingValues?.bestMatch ?? 0 })
-            return sortedrestaurants
+            restaurants.sort(by: { $0.sortingValues?.bestMatch ?? 0 > $1.sortingValues?.bestMatch ?? 0 })
         case .newest:
-            sortedrestaurants = restaurants.sorted(by: { $0.sortingValues?.newest ?? 0 > $1.sortingValues?.newest ?? 0 })
-            return sortedrestaurants
+            restaurants.sort(by: { $0.sortingValues?.newest ?? 0 > $1.sortingValues?.newest ?? 0 })
+            
         case .ratingAverage:
-            sortedrestaurants = restaurants.sorted(by: { $0.sortingValues?.ratingAverage ?? 0 > $1.sortingValues?.ratingAverage ?? 0 })
-            return sortedrestaurants
+            restaurants.sort(by: { $0.sortingValues?.ratingAverage ?? 0 > $1.sortingValues?.ratingAverage ?? 0 })
+            
         case .distance:
-            sortedrestaurants = restaurants.sorted(by: { $0.sortingValues?.distance ?? 0 > $1.sortingValues?.distance ?? 0})
-            return sortedrestaurants
+            restaurants.sort(by: { $0.sortingValues?.distance ?? 0 < $1.sortingValues?.distance ?? 0})
+            
         case .popularity:
-            sortedrestaurants = restaurants.sorted(by: { $0.sortingValues?.popularity ?? 0 > $1.sortingValues?.popularity ?? 0 })
-            return sortedrestaurants
+            restaurants.sort(by: { $0.sortingValues?.popularity ?? 0 > $1.sortingValues?.popularity ?? 0 })
+            
         case .averageProductPrice:
-            sortedrestaurants = restaurants.sorted(by: { $0.sortingValues?.averageProductPrice ?? 0 > $1.sortingValues?.averageProductPrice ?? 0})
-            return sortedrestaurants
+            restaurants.sort(by: { $0.sortingValues?.averageProductPrice ?? 0 < $1.sortingValues?.averageProductPrice ?? 0})
+            
         case .deliveryCosts:
-            sortedrestaurants = restaurants.sorted(by: { $0.sortingValues?.deliveryCosts ?? 0 > $1.sortingValues?.deliveryCosts ?? 0 })
-            return sortedrestaurants
+            restaurants.sort(by: { $0.sortingValues?.deliveryCosts ?? 0 < $1.sortingValues?.deliveryCosts ?? 0 })
+            
         case .minimumCost:
-            sortedrestaurants = restaurants.sorted(by: { $0.sortingValues?.minCost ?? 0 > $1.sortingValues?.minCost ?? 0 })
-            return sortedrestaurants
+            restaurants.sort(by: { $0.sortingValues?.minCost ?? 0 < $1.sortingValues?.minCost ?? 0 })
+            
         }
     }
+    private func sortWithStatus() {
+        restaurants.sort{return ($0.resturantState.value < $1.resturantState.value )}
+    }
     
-    func sortedRestaurants(sortOptions:SortOptions) /*-> [Restaurant] */{
-        let sortedFavoriatesRestaurants = sort(sortOption: sortOptions, restaurants: getFavoritesRestaurants())
-        let sortedNonFavoriatesRestaurants =  sort(sortOption: sortOptions, restaurants: getNonFavoritesRestaurants())
-
-        
-        let result =  sortedFavoriatesRestaurants + sortedNonFavoriatesRestaurants
-        delegate?.updateData(restaurants: result, sortOption: sortOption)
-//        return result
+    private func sortWithFavourite() {
+        restaurants.sort{return ($0.isFavorite && !$1.isFavorite)}
     }
 }
 
@@ -106,7 +85,7 @@ enum ResturantState: String {
 }
 
 
-enum SortOptions : Int{
+enum SortOptions : Int {
     case bestMatch = 0
     case newest
     case ratingAverage
@@ -115,4 +94,9 @@ enum SortOptions : Int{
     case averageProductPrice
     case deliveryCosts
     case minimumCost
+    
+    static var allCases: [String] {
+        return ["best match", "newest",
+                "rating average", "distance", "popularity", "average product price", "delivery costs","minimum cost"]
+    }
 }

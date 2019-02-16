@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import DropDown
 
 class RestaurantListViewController: UIViewController {
     var viewModel: RestaurantListViewModel!
     //    fileprivate let router: RestaurantListRouter
     
     @IBOutlet weak var resturantTableView: UITableView!
-    let sortOptionDropDown = DropDown()
     @IBOutlet weak var selectOperatorButton: UIButton!
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,10 +23,6 @@ class RestaurantListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
    
-        setupSortOptionsDropDown()
-        sortOptionDropDown.dismissMode = .automatic
-        sortOptionDropDown.direction = .any
-        
         viewModel.delegate = self
         
         tableViewDataSource = TableViewDataSource(restaurants: viewModel.restaurants, sortOption: .bestMatch)
@@ -42,26 +36,24 @@ class RestaurantListViewController: UIViewController {
         resturantTableView.reloadData()
     }
     @IBAction func showSortOptions(_ sender: UIButton) {
-        sortOptionDropDown.show()
+        setupSortOptionsDropDown()
     }
     func setupSortOptionsDropDown() {
-        sortOptionDropDown.anchorView = selectOperatorButton
-        sortOptionDropDown.bottomOffset = CGPoint(x: 0, y: selectOperatorButton.bounds.height)
-        
-        sortOptionDropDown.dataSource = ["best match", "newest",
-                                         "rating average", "distance", "popularity", "average product price", "delivery costs","minimum cost"]
-        // Action triggered on selection
-        sortOptionDropDown.selectionAction = { [weak self] (index, item) in
-            
+        let options:[String] = SortOptions.allCases
+        var actions: [(String, UIAlertAction.Style)] = []
+        options.forEach { optionText in
+            actions.append((optionText, UIAlertAction.Style.default))
+        }
+
+        Alerts.showActionsheet(viewController: self, title: "Select Sort Option", message: "", actions: actions) { (index) in
             if let sortOptions = SortOptions(rawValue: index)  {
-                self?.viewModel.sortedRestaurants(sortOptions: sortOptions)
-                self?.selectOperatorButton.setTitle(item, for: .normal)
+                self.viewModel.sortResults(sortOption: sortOptions)
+                let optionText = options[index]
+                self.selectOperatorButton.setTitle(optionText, for: .normal)
                 
             }
-            
-        }
-        sortOptionDropDown.selectRow(0)
 
+        }
     }
 }
 extension  RestaurantListViewController: ViewModelDelegate {
@@ -74,4 +66,17 @@ extension  RestaurantListViewController: ViewModelDelegate {
         }
     }
     
+}
+
+struct Alerts {
+    static func showActionsheet(viewController: UIViewController, title: String, message: String, actions: [(String, UIAlertAction.Style)], completion: @escaping (_ index: Int) -> Void) {
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        for (index, (title, style)) in actions.enumerated() {
+            let alertAction = UIAlertAction(title: title, style: style) { (_) in
+                completion(index)
+            }
+            alertViewController.addAction(alertAction)
+        }
+        viewController.present(alertViewController, animated: true, completion: nil)
+    }
 }

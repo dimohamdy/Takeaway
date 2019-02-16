@@ -6,7 +6,6 @@ target 'Takeaway' do
   use_frameworks!
 
   # Pods for Takeaway
-    pod 'DropDown', '2.3.12'
     pod 'RealmSwift','3.13.1'
 
   target 'TakeawayTests' do
