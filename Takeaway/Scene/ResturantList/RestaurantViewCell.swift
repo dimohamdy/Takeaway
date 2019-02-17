@@ -28,13 +28,6 @@ class RestaurantViewCell: UITableViewCell,CellReusable {
             
         }
     }    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     
     @IBAction func addToFavorites(_ sender: UIButton) {
         guard let restaurant = restaurant else {

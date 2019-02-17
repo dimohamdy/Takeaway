@@ -22,7 +22,6 @@
 		3D5F5CAD2211A855002A5804 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CAC2211A855002A5804 /* TableViewDataSource.swift */; };
 		3D5F5CAF2211AA98002A5804 /* RestaurantViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CAE2211AA98002A5804 /* RestaurantViewCell.swift */; };
 		3D5F5CB12211AEF7002A5804 /* CellReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CB02211AEF7002A5804 /* CellReusable.swift */; };
-		3D5F5CB92211CD18002A5804 /* RestaurantListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CB52211CD18002A5804 /* RestaurantListRouter.swift */; };
 		3D5F5CBA2211CD18002A5804 /* RestaurantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CB62211CD18002A5804 /* RestaurantListViewController.swift */; };
 		3D5F5CBB2211CD18002A5804 /* RestaurantListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CB72211CD18002A5804 /* RestaurantListBuilder.swift */; };
 		3D5F5CBC2211CD18002A5804 /* RestaurantListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CB82211CD18002A5804 /* RestaurantListViewModel.swift */; };
@@ -35,6 +34,8 @@
 		3DB47BC022195A48000B23AD /* LocalRestaurantRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB47BB722195A48000B23AD /* LocalRestaurantRepositoryTests.swift */; };
 		3DB47BC222195BDE000B23AD /* RestaurantListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB47BC122195BDE000B23AD /* RestaurantListViewModelTest.swift */; };
 		3DB47BC422199CBC000B23AD /* FloatExtentionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB47BC322199CBC000B23AD /* FloatExtentionTest.swift */; };
+		3DB47BC72219EDDA000B23AD /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB47BC62219EDD9000B23AD /* AlertFactory.swift */; };
+		3DB47BC92219F0A7000B23AD /* SharedEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB47BC82219F0A7000B23AD /* SharedEnums.swift */; };
 		ACCA72C545114AE12009B286 /* Pods_TakeawayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B029274B8DA0AF5CEEF4A482 /* Pods_TakeawayTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +69,6 @@
 		3D5F5CAC2211A855002A5804 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		3D5F5CAE2211AA98002A5804 /* RestaurantViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewCell.swift; sourceTree = "<group>"; };
 		3D5F5CB02211AEF7002A5804 /* CellReusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellReusable.swift; sourceTree = "<group>"; };
-		3D5F5CB52211CD18002A5804 /* RestaurantListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListRouter.swift; sourceTree = "<group>"; };
 		3D5F5CB62211CD18002A5804 /* RestaurantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewController.swift; sourceTree = "<group>"; };
 		3D5F5CB72211CD18002A5804 /* RestaurantListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListBuilder.swift; sourceTree = "<group>"; };
 		3D5F5CB82211CD18002A5804 /* RestaurantListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewModel.swift; sourceTree = "<group>"; };
@@ -81,6 +81,8 @@
 		3DB47BB722195A48000B23AD /* LocalRestaurantRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalRestaurantRepositoryTests.swift; sourceTree = "<group>"; };
 		3DB47BC122195BDE000B23AD /* RestaurantListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RestaurantListViewModelTest.swift; path = Tests/RestaurantListViewModelTest.swift; sourceTree = "<group>"; };
 		3DB47BC322199CBC000B23AD /* FloatExtentionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtentionTest.swift; sourceTree = "<group>"; };
+		3DB47BC62219EDD9000B23AD /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
+		3DB47BC82219F0A7000B23AD /* SharedEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedEnums.swift; sourceTree = "<group>"; };
 		6201DC62DA9FF71EA018D413 /* Pods_Takeaway.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Takeaway.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		724195C2AE2BE391AA0599B6 /* Pods-TakeawayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeawayTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TakeawayTests/Pods-TakeawayTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6F7B82DD96F9410801FCED7 /* Pods-Takeaway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Takeaway.release.xcconfig"; path = "Pods/Target Support Files/Pods-Takeaway/Pods-Takeaway.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,7 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				3D5F5C7A2210D7D5002A5804 /* AppDelegate.swift */,
-				3D5F5CC32213955D002A5804 /* RealmManager.swift */,
+				3DB47BC52219EDC2000B23AD /* Views */,
 				3D5F5CC12212FB44002A5804 /* Extension */,
 				3D5F5CC22212FBDE002A5804 /* DataAccessLayer */,
 				3D5F5C9C2211A100002A5804 /* Models */,
@@ -182,7 +184,6 @@
 			children = (
 				3D5F5CAC2211A855002A5804 /* TableViewDataSource.swift */,
 				3D5F5CAE2211AA98002A5804 /* RestaurantViewCell.swift */,
-				3D5F5CB52211CD18002A5804 /* RestaurantListRouter.swift */,
 				3D5F5CB62211CD18002A5804 /* RestaurantListViewController.swift */,
 				3D5F5CB72211CD18002A5804 /* RestaurantListBuilder.swift */,
 				3D5F5CB82211CD18002A5804 /* RestaurantListViewModel.swift */,
@@ -193,6 +194,7 @@
 		3D5F5CB42211CCF4002A5804 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				3DB47BC82219F0A7000B23AD /* SharedEnums.swift */,
 				3D5F5CB22211C114002A5804 /* ResturantList */,
 			);
 			path = Scene;
@@ -213,10 +215,19 @@
 			isa = PBXGroup;
 			children = (
 				3D5F5CA52211A766002A5804 /* RestaurantRepository */,
+				3D5F5CC32213955D002A5804 /* RealmManager.swift */,
 				3D5F5CA32211A63C002A5804 /* DataLoader.swift */,
 				3D5F5C9A2211A010002A5804 /* Restaurants.json */,
 			);
 			path = DataAccessLayer;
+			sourceTree = "<group>";
+		};
+		3DB47BC52219EDC2000B23AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3DB47BC62219EDD9000B23AD /* AlertFactory.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		413E5ECFCF45B24B698B97F8 /* Pods */ = {
@@ -410,15 +421,16 @@
 				3D5F5CBC2211CD18002A5804 /* RestaurantListViewModel.swift in Sources */,
 				3D5F5CBA2211CD18002A5804 /* RestaurantListViewController.swift in Sources */,
 				3D5F5CBB2211CD18002A5804 /* RestaurantListBuilder.swift in Sources */,
+				3DB47BC72219EDDA000B23AD /* AlertFactory.swift in Sources */,
 				3D5F5CA92211A766002A5804 /* RestaurantRepository.swift in Sources */,
 				3D5F5CC42213955E002A5804 /* RealmManager.swift in Sources */,
 				3D5F5CC02211DD17002A5804 /* Storyboard+Extension.swift in Sources */,
 				3D5F5CB12211AEF7002A5804 /* CellReusable.swift in Sources */,
-				3D5F5CB92211CD18002A5804 /* RestaurantListRouter.swift in Sources */,
 				3D5F5CAF2211AA98002A5804 /* RestaurantViewCell.swift in Sources */,
 				3D5F5CA22211A101002A5804 /* Restaurant.swift in Sources */,
 				3D5F5CAA2211A766002A5804 /* LocalRestaurantRepository.swift in Sources */,
 				3D5F5CA12211A101002A5804 /* SortingValue.swift in Sources */,
+				3DB47BC92219F0A7000B23AD /* SharedEnums.swift in Sources */,
 				3D5F5CA42211A63C002A5804 /* DataLoader.swift in Sources */,
 				3D5F5CA02211A101002A5804 /* Result.swift in Sources */,
 				3D9622B22219566800BB6EE0 /* Float+Extension.swift in Sources */,

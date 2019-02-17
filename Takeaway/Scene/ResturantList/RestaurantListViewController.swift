@@ -10,49 +10,46 @@ import UIKit
 
 class RestaurantListViewController: UIViewController {
     var viewModel: RestaurantListViewModel!
-    //    fileprivate let router: RestaurantListRouter
     
     @IBOutlet weak var resturantTableView: UITableView!
-    @IBOutlet weak var selectOperatorButton: UIButton!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     var tableViewDataSource:TableViewDataSource!
-
+    var resultSearchController = UISearchController()
+    
+    var searchTask: DispatchWorkItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        
         viewModel.delegate = self
         
         tableViewDataSource = TableViewDataSource(restaurants: viewModel.restaurants, sortOption: .bestMatch)
         
         resturantTableView.delegate = tableViewDataSource
         resturantTableView.dataSource = tableViewDataSource
+        
+        setupUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         resturantTableView.reloadData()
     }
-    @IBAction func showSortOptions(_ sender: UIButton) {
-        setupSortOptionsDropDown()
-    }
-    func setupSortOptionsDropDown() {
+
+    @objc func showSortOptions() {
         let options:[String] = SortOptions.allCases
         var actions: [(String, UIAlertAction.Style)] = []
         options.forEach { optionText in
             actions.append((optionText, UIAlertAction.Style.default))
         }
-
-        Alerts.showActionsheet(viewController: self, title: "Select Sort Option", message: "", actions: actions) { (index) in
+        
+        Alerts.showActionsheet(viewController: self, title: "Select Sort Option", message: "", actions: actions, checkIndex: viewModel.sortOption.rawValue) { (index) in
             if let sortOptions = SortOptions(rawValue: index)  {
                 self.viewModel.sortRestaurants(sortOption: sortOptions)
-                let optionText = options[index]
-                self.selectOperatorButton.setTitle(optionText, for: .normal)
-                
             }
-
         }
     }
 }
@@ -68,15 +65,56 @@ extension  RestaurantListViewController: ViewModelDelegate {
     
 }
 
-struct Alerts {
-    static func showActionsheet(viewController: UIViewController, title: String, message: String, actions: [(String, UIAlertAction.Style)], completion: @escaping (_ index: Int) -> Void) {
-        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        for (index, (title, style)) in actions.enumerated() {
-            let alertAction = UIAlertAction(title: title, style: style) { (_) in
-                completion(index)
-            }
-            alertViewController.addAction(alertAction)
+extension RestaurantListViewController {
+    func setupUI() {
+        if #available(iOS 11.0, *) {
+            self.navigationItem.largeTitleDisplayMode = .never
+            self.navigationItem.largeTitleDisplayMode = .always
         }
-        viewController.present(alertViewController, animated: true, completion: nil)
+        self.title = "Resturant"
+        resturantTableView.scrollIndicatorInsets = resturantTableView.contentInset
+        
+        if #available(iOS 11.0, *) {
+            self.navigationItem.largeTitleDisplayMode = .never
+            self.navigationItem.largeTitleDisplayMode = .always
+        }
+        navigationItem.hidesSearchBarWhenScrolling = true
+        
+        self.resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            controller.searchBar.barStyle = UIBarStyle.black
+            controller.searchBar.barTintColor = UIColor.white
+            controller.searchBar.backgroundColor = UIColor.clear
+            self.resturantTableView.tableHeaderView = controller.searchBar
+            self.navigationController?.navigationItem.searchController = resultSearchController
+            return controller
+        })()
+        
+        
+        let filterButton = UIButton(type: .custom)
+        filterButton.setImage(#imageLiteral(resourceName: "filter"), for: .normal)
+        filterButton.frame = CGRect(x: 0.0, y: 0.0, width: 35.0, height: 35.0)
+        filterButton.addTarget(self, action:#selector(RestaurantListViewController.showSortOptions), for:.touchUpInside)
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: filterButton)]
+    }
+}
+extension  RestaurantListViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let query = searchController.searchBar.text {
+            // Cancel previous task if any
+            searchTask?.cancel()
+            // Replace previous task with a new one
+            let task = DispatchWorkItem { [weak self] in
+                self?.viewModel.searchTermUpdated(query)
+            }
+            self.searchTask = task
+            // Execute task in 0.75 seconds (if not cancelled !)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
+        }
+        
     }
 }
