@@ -10,11 +10,11 @@ import RealmSwift
 
 class SortingValue : Object,Decodable {
 
-	@objc dynamic var averageProductPrice: Int = 0
+	@objc dynamic var averageProductPrice: Float = 0.0
 	@objc dynamic var bestMatch: Float = 0.0
-	@objc dynamic var deliveryCosts: Int = 0
-	@objc dynamic var distance: Int = 0
-	@objc dynamic var minCost: Int = 0
+	@objc dynamic var deliveryCosts: Float = 0.0
+	@objc dynamic var distance: Float = 0.0
+	@objc dynamic var minCost: Float = 0.0
 	@objc dynamic var newest: Float = 0.0
 	@objc dynamic var popularity: Float = 0.0
 	@objc dynamic var ratingAverage: Float = 0.0
@@ -33,11 +33,11 @@ class SortingValue : Object,Decodable {
     convenience required init(from decoder: Decoder) throws  {
         self.init()
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-        averageProductPrice = try values.decodeIfPresent(Int.self, forKey: .averageProductPrice) ?? 0
+        averageProductPrice = try values.decodeIfPresent(Float.self, forKey: .averageProductPrice) ?? 0
 		bestMatch = try values.decodeIfPresent(Float.self, forKey: .bestMatch) ?? 0.0
-		deliveryCosts = try values.decodeIfPresent(Int.self, forKey: .deliveryCosts) ?? 0
-		distance = try values.decodeIfPresent(Int.self, forKey: .distance) ?? 0
-		minCost = try values.decodeIfPresent(Int.self, forKey: .minCost) ?? 0
+		deliveryCosts = try values.decodeIfPresent(Float.self, forKey: .deliveryCosts) ?? 0
+		distance = try values.decodeIfPresent(Float.self, forKey: .distance) ?? 0
+		minCost = try values.decodeIfPresent(Float.self, forKey: .minCost) ?? 0
 		newest = try values.decodeIfPresent(Float.self, forKey: .newest) ?? 0.0
 		popularity = try values.decodeIfPresent(Float.self, forKey: .popularity) ?? 0.0
 		ratingAverage = try values.decodeIfPresent(Float.self, forKey: .ratingAverage) ?? 0.0
