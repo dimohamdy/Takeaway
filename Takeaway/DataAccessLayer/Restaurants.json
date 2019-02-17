@@ -2,7 +2,7 @@
 	"restaurants": [{
 		"name": "Tanoshii Sushi",
 		"status": "open",
-        "isFavorite": true,
+        "isFavorite": false,
 		"sortingValues": {
 			"bestMatch": 0.0,
 			"newest": 96.0,

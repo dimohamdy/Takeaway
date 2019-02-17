@@ -47,7 +47,7 @@ class RestaurantListViewController: UIViewController {
 
         Alerts.showActionsheet(viewController: self, title: "Select Sort Option", message: "", actions: actions) { (index) in
             if let sortOptions = SortOptions(rawValue: index)  {
-                self.viewModel.sortResults(sortOption: sortOptions)
+                self.viewModel.sortRestaurants(sortOption: sortOptions)
                 let optionText = options[index]
                 self.selectOperatorButton.setTitle(optionText, for: .normal)
                 

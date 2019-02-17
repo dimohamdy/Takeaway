@@ -12,7 +12,6 @@
 		3D5F5C802210D7D5002A5804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D5F5C7E2210D7D5002A5804 /* Main.storyboard */; };
 		3D5F5C822210D7DA002A5804 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D5F5C812210D7DA002A5804 /* Assets.xcassets */; };
 		3D5F5C852210D7DA002A5804 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D5F5C832210D7DA002A5804 /* LaunchScreen.storyboard */; };
-		3D5F5C902210D7DB002A5804 /* TakeawayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5C8F2210D7DB002A5804 /* TakeawayTests.swift */; };
 		3D5F5C9B2211A010002A5804 /* Restaurants.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D5F5C9A2211A010002A5804 /* Restaurants.json */; };
 		3D5F5CA02211A101002A5804 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5C9D2211A100002A5804 /* Result.swift */; };
 		3D5F5CA12211A101002A5804 /* SortingValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5C9E2211A100002A5804 /* SortingValue.swift */; };
@@ -31,6 +30,11 @@
 		3D5F5CC02211DD17002A5804 /* Storyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CBF2211DD17002A5804 /* Storyboard+Extension.swift */; };
 		3D5F5CC42213955E002A5804 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5CC32213955D002A5804 /* RealmManager.swift */; };
 		3D9622B22219566800BB6EE0 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9622B12219566800BB6EE0 /* Float+Extension.swift */; };
+		3DB47BB822195A48000B23AD /* RestaurantListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB47BAF22195A46000B23AD /* RestaurantListViewControllerTest.swift */; };
+		3DB47BBD22195A48000B23AD /* SortOptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB47BB422195A47000B23AD /* SortOptionTests.swift */; };
+		3DB47BC022195A48000B23AD /* LocalRestaurantRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB47BB722195A48000B23AD /* LocalRestaurantRepositoryTests.swift */; };
+		3DB47BC222195BDE000B23AD /* RestaurantListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB47BC122195BDE000B23AD /* RestaurantListViewModelTest.swift */; };
+		3DB47BC422199CBC000B23AD /* FloatExtentionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB47BC322199CBC000B23AD /* FloatExtentionTest.swift */; };
 		ACCA72C545114AE12009B286 /* Pods_TakeawayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B029274B8DA0AF5CEEF4A482 /* Pods_TakeawayTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +57,6 @@
 		3D5F5C842210D7DA002A5804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D5F5C862210D7DA002A5804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D5F5C8B2210D7DB002A5804 /* TakeawayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakeawayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D5F5C8F2210D7DB002A5804 /* TakeawayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeawayTests.swift; sourceTree = "<group>"; };
 		3D5F5C912210D7DB002A5804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D5F5C9A2211A010002A5804 /* Restaurants.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Restaurants.json; sourceTree = "<group>"; };
 		3D5F5C9D2211A100002A5804 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -73,6 +76,11 @@
 		3D5F5CBF2211DD17002A5804 /* Storyboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard+Extension.swift"; sourceTree = "<group>"; };
 		3D5F5CC32213955D002A5804 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		3D9622B12219566800BB6EE0 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		3DB47BAF22195A46000B23AD /* RestaurantListViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantListViewControllerTest.swift; sourceTree = "<group>"; };
+		3DB47BB422195A47000B23AD /* SortOptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortOptionTests.swift; sourceTree = "<group>"; };
+		3DB47BB722195A48000B23AD /* LocalRestaurantRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalRestaurantRepositoryTests.swift; sourceTree = "<group>"; };
+		3DB47BC122195BDE000B23AD /* RestaurantListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RestaurantListViewModelTest.swift; path = Tests/RestaurantListViewModelTest.swift; sourceTree = "<group>"; };
+		3DB47BC322199CBC000B23AD /* FloatExtentionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtentionTest.swift; sourceTree = "<group>"; };
 		6201DC62DA9FF71EA018D413 /* Pods_Takeaway.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Takeaway.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		724195C2AE2BE391AA0599B6 /* Pods-TakeawayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeawayTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TakeawayTests/Pods-TakeawayTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6F7B82DD96F9410801FCED7 /* Pods-Takeaway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Takeaway.release.xcconfig"; path = "Pods/Target Support Files/Pods-Takeaway/Pods-Takeaway.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,8 +148,12 @@
 		3D5F5C8E2210D7DB002A5804 /* TakeawayTests */ = {
 			isa = PBXGroup;
 			children = (
-				3D5F5C8F2210D7DB002A5804 /* TakeawayTests.swift */,
+				3DB47BB422195A47000B23AD /* SortOptionTests.swift */,
+				3DB47BAF22195A46000B23AD /* RestaurantListViewControllerTest.swift */,
+				3DB47BB722195A48000B23AD /* LocalRestaurantRepositoryTests.swift */,
 				3D5F5C912210D7DB002A5804 /* Info.plist */,
+				3DB47BC122195BDE000B23AD /* RestaurantListViewModelTest.swift */,
+				3DB47BC322199CBC000B23AD /* FloatExtentionTest.swift */,
 			);
 			path = TakeawayTests;
 			sourceTree = "<group>";
@@ -418,7 +430,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D5F5C902210D7DB002A5804 /* TakeawayTests.swift in Sources */,
+				3DB47BBD22195A48000B23AD /* SortOptionTests.swift in Sources */,
+				3DB47BC022195A48000B23AD /* LocalRestaurantRepositoryTests.swift in Sources */,
+				3DB47BC422199CBC000B23AD /* FloatExtentionTest.swift in Sources */,
+				3DB47BC222195BDE000B23AD /* RestaurantListViewModelTest.swift in Sources */,
+				3DB47BB822195A48000B23AD /* RestaurantListViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

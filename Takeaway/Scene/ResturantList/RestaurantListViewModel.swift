@@ -17,13 +17,12 @@ class RestaurantListViewModel {
 
     // output
     var restaurants:[Restaurant] = []
-    // output
     weak var delegate: ViewModelDelegate?
 
     init(restaurantRepository:RestaurantRepository.Type) {
         restaurants = restaurantRepository.getRestaurantsFromDB()
     }
-    func sortResults(sortOption:SortOptions) {
+    func sortRestaurants(sortOption:SortOptions) {
         self.sortOption = sortOption
         sortForValues()
         sortWithStatus()

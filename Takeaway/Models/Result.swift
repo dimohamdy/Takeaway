@@ -11,14 +11,12 @@ struct Result : Decodable {
 
 	let restaurants : [Restaurant]?
 
-
 	enum CodingKeys: String, CodingKey {
 		case restaurants = "restaurants"
 	}
+    
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		restaurants = try values.decodeIfPresent([Restaurant].self, forKey: .restaurants)
 	}
-
-
 }
