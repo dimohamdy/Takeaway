@@ -21,10 +21,6 @@ class RestaurantListViewControllerTest: XCTestCase {
         self.restaurantListViewController.viewDidLoad()
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-    
     func testSelectCategory() {
         
         // Arrange: setup UINavigationController

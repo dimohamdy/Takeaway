@@ -25,10 +25,6 @@ class LocalRestaurantRepositoryTests: XCTestCase {
 
     }
 
-    override func tearDown() {
-     //clear Data from DataBase
-    }
-
     func testGetItemsFromDB() {
         // Act: get data from API .
         let restaurants = LocalRestaurantRepository.getRestaurantsFromDB()
