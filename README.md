@@ -18,9 +18,6 @@
 * I use [JSONExport](https://github.com/Ahmed-Ali/JSONExport) to generate model from JSON.
 
 
-## Note
-The task is written in **Gherkin Language** ,that inspire me to apply BDD using Quick and Nimble but 3rd party frameworks not allowed.
-
 # UnitTest
 * I apply  **Arrange, Act and Assert (AAA) Pattern** in Unit Testing.
 * Test get data from JSON and Save it to Database.
