@@ -16,11 +16,11 @@ class RestaurantListViewModel {
     var sortOption:SortOptions = .bestMatch
     // output
     var restaurants:[Restaurant] = []
-    /// Filtered and Sorted List of restaruants
+    // Filtered and Sorted List of restaruants
     var filteredRestaurants : [Restaurant]!
     
     weak var delegate: ViewModelDelegate?
-
+    
     init(restaurantRepository:RestaurantRepository.Type) {
         restaurants = restaurantRepository.getRestaurantsFromDB()
         filteredRestaurants = restaurants
@@ -34,34 +34,37 @@ class RestaurantListViewModel {
     }
     
     private func sortForValues() {
-        switch sortOption {
-        case .bestMatch:
-            filteredRestaurants.sort(by: { $0.sortingValues?.bestMatch ?? 0 > $1.sortingValues?.bestMatch ?? 0 })
-        case .newest:
-            filteredRestaurants.sort(by: { $0.sortingValues?.newest ?? 0 > $1.sortingValues?.newest ?? 0 })
-            
-        case .ratingAverage:
-            filteredRestaurants.sort(by: { $0.sortingValues?.ratingAverage ?? 0 > $1.sortingValues?.ratingAverage ?? 0 })
-            
-        case .distance:
-            filteredRestaurants.sort(by: { $0.sortingValues?.distance ?? 0 < $1.sortingValues?.distance ?? 0})
-            
-        case .popularity:
-            filteredRestaurants.sort(by: { $0.sortingValues?.popularity ?? 0 > $1.sortingValues?.popularity ?? 0 })
-            
-        case .averageProductPrice:
-            filteredRestaurants.sort(by: { $0.sortingValues?.averageProductPrice ?? 0 < $1.sortingValues?.averageProductPrice ?? 0})
-            
-        case .deliveryCosts:
-            filteredRestaurants.sort(by: { $0.sortingValues?.deliveryCosts ?? 0 < $1.sortingValues?.deliveryCosts ?? 0 })
-            
-        case .minimumCost:
-            filteredRestaurants.sort(by: { $0.sortingValues?.minCost ?? 0 < $1.sortingValues?.minCost ?? 0 })
-            
-        }
-    }
+        
+        
+        filteredRestaurants.sort(by: {
+            guard let sortingValues1 = $0.sortingValues,let sortingValues2 = $1.sortingValues else {
+                return false
+            }
+            switch sortOption {
+            case .bestMatch:
+                return sortingValues1.bestMatch > sortingValues2.bestMatch
+            case .newest:
+                return sortingValues1.newest  > sortingValues2.newest
+            case .ratingAverage:
+                return sortingValues1.ratingAverage > sortingValues2.ratingAverage
+            case .distance:
+                return sortingValues1.distance < sortingValues2.distance
+            case .popularity:
+                return sortingValues1.popularity > sortingValues2.popularity
+            case .averageProductPrice:
+                return sortingValues1.averageProductPrice < sortingValues2.averageProductPrice
+            case .deliveryCosts:
+                return sortingValues1.deliveryCosts < sortingValues2.deliveryCosts
+            case .minimumCost:
+                return sortingValues1.minCost < sortingValues2.minCost
+                
+            }
+        })
+        
+    }    
+    
     private func sortWithStatus() {
-        filteredRestaurants.sort{return ($0.resturantState.value < $1.resturantState.value )}
+        filteredRestaurants.sort{return ($0.resturantState.value > $1.resturantState.value )}
     }
     
     private func sortWithFavourite() {
@@ -72,6 +75,6 @@ class RestaurantListViewModel {
         filteredRestaurants = searchString.isEmpty ? restaurants :  restaurants.filter{ $0.name?.lowercased().range(of: searchString.lowercased()) != nil }
         sortRestaurants(sortOption: self.sortOption)
     }
-
+    
 }
 

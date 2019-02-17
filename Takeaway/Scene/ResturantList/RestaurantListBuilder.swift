@@ -12,10 +12,8 @@ struct RestaurantListBuilder {
     
     static func viewController(dataSource:RestaurantRepository.Type) -> UIViewController {
         let viewModel = RestaurantListViewModel(restaurantRepository: dataSource)
-        let router = RestaurantListRouter()
         let viewController = UIStoryboard.instantiateInitialViewController(.main) as! RestaurantListViewController
         viewController.viewModel = viewModel
-        router.viewController = viewController
         
         return viewController
     }

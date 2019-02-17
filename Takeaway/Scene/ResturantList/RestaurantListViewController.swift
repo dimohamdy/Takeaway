@@ -46,7 +46,7 @@ class RestaurantListViewController: UIViewController {
             actions.append((optionText, UIAlertAction.Style.default))
         }
         
-        Alerts.showActionsheet(viewController: self, title: "Select Sort Option", message: "", actions: actions, checkIndex: viewModel.sortOption.rawValue) { (index) in
+        AlertsFactory.showActionsheet(viewController: self, title: "Select Sort Option", message: "", actions: actions, checkIndex: viewModel.sortOption.rawValue) { (index) in
             if let sortOptions = SortOptions(rawValue: index)  {
                 self.viewModel.sortRestaurants(sortOption: sortOptions)
             }
