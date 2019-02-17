@@ -26,7 +26,7 @@ The task is written in **Gherkin Language** ,that inspire me to apply BDD using 
 * Test get data from JSON and Save it to Database.
 * Test **ViewModel**.
 * Test **ViewController**.
-* Test **Sort Login**.
+* Test **Sort Logic**.
 
 
  # Install The project 
