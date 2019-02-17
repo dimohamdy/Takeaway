@@ -21,9 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = UserDefaults.standard
         if  defaults.bool(forKey: "openedBefore") == false {
             defaults.set(true, forKey: "openedBefore")
-            //get data from json and then save it to database and use it
-            let restaurants = LocalRestaurantRepository.getRestaurantsFromJSONFile()
-            LocalRestaurantRepository.saveRestaurants(restaurants: restaurants)
+            LocalRestaurantRepository.setupDataBase()
         }
         
         

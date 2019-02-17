@@ -11,21 +11,21 @@ import CoreData
 import UIKit
 
 final class LocalRestaurantRepository: RestaurantRepository {
-
+    
     static func getRestaurantsFromJSONFile()->[Restaurant] {
         let decoder = JSONDecoder()
-
+        
         guard let data = getDataFromLocalJSON(), let result = try? decoder.decode(Result.self, from: data), let restaurants = result.restaurants, restaurants.count > 0 else {
             return []         
         }
-
+        
         return restaurants
     }
     
     static func getRestaurantsFromDB()->[Restaurant]{
         return Array(RealmManager.realm.objects(Restaurant.self))
     }
-
+    
     
     static func saveRestaurants(restaurants:[Restaurant]){
         restaurants.forEach { restaurant in
@@ -39,7 +39,7 @@ final class LocalRestaurantRepository: RestaurantRepository {
         
         return Array(RealmManager.realm.objects(Restaurant.self).filter("isFavorite == %@", false))
     }
-
+    
     static func getFavoriatesRestaurants()->[Restaurant]{
         
         return Array(RealmManager.realm.objects(Restaurant.self).filter("isFavorite == %@", true))
@@ -56,5 +56,11 @@ final class LocalRestaurantRepository: RestaurantRepository {
             restaurant.isFavorite = false
         }
     }
-
+    
+    static func setupDataBase(){
+        //get data from json and then save it to database and use it
+        let restaurants = LocalRestaurantRepository.getRestaurantsFromJSONFile()
+        LocalRestaurantRepository.saveRestaurants(restaurants: restaurants)
+    }
+    
 }
